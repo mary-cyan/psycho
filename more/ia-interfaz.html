@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+				<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+				<title> hud </title>
+				  <style>
+				
+				  /* ====== RESET Y BASE ====== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: sans-serif; background: #f3f4f6; }
+
+  /* ====== LAYOUT DESKTOP ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 25% 1.2fr 25%;
+    height: 100vh;
+  }
+  aside, main {
+    overflow-y: auto;
+    padding: 10px;
+  }
+  aside { background: linear-gradient(120deg, #e5e7eb 0%, green 100%); }
+  main { background: #fff; }
+
+  /* ====== NAVBAR SUPERIOR ====== */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 8vh;
+    background: linear-gradient(90deg, skyblue 0%, violet 100%);
+    color: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px solid black;
+    z-index: 1000;
+    margin: 3px solid black;
+  }
+  .navbar h1 { font-size: 1.2rem; }
+  .navbar button {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  /* ====== MOBILE ====== */
+  @media (max-width: 768px) {
+    .layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 0.7fr auto;
+    }
+    aside {
+      display: none; /* ocultar sidebars por defecto */
+    }
+    aside.active {
+      display: block;
+      position: fixed;
+      top: 80px;
+      bottom: 0;
+      width: 80%;
+      z-index: 999;
+    }
+    aside.left { left: 0; }
+    aside.right { right: 0; }
+  }
+
+  /* ====== IFRAMES ====== */
+  iframe {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
+    background: white;
+  }
+ }
+</style>
+</head>
+<body>
+  
+  <!-- NAV BAR -->
+				
+				<div class="navbar">
+  <button onclick="toggleSidebar('left')">☰</button>
+  <h1>Oz </h1>
+  <button onclick="toggleSidebar('right')">☰</button>
+</div>
+  
+  <!--    LAYOUT MENU -->
+  
+				<div class="layout" style="padding-top:50px;">
+  <aside class="left">
+    <iframe src="generadorCodes.html"></iframe>
+  </aside>
+  <main>
+<div class="layout" style="padding-top:50px;">
+  <aside class="left">
+    <iframe src=""></iframe>
+  </aside>
+  <main>
+  				<!--MANUU CONTENIDO 
+    <iframe src="archivos de texto y Solic.html" style="width:50vh;"></iframe>-->
+  				
+  				
+  				
+  </main>
+  <aside class="right">
+  				    <iframe src="" style="width:50vh;"></iframe>--
+  </aside>
+				<script>
+  // Lógica para mostrar/ocultar sidebars en móvil
+  function toggleSidebar(side) {
+    const aside = document.querySelector(`aside.${side}`);
+    aside.classList.toggle('active');
+  }
+
+  // Centrar contenido aunque haya zoom
+  window.addEventListener('resize', centerLayout);
+  window.addEventListener('load', centerLayout);
+  function centerLayout() {
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+  }
+</script>
+</body>
+</html>

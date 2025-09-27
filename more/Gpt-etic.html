@@ -1,0 +1,189 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi IA Personal</title>
+  <link rel="stylesheet" href="style.css">
+				<style>
+				body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: #4b6cb7;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.logo {
+  width: 60px;
+}
+
+main {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+section {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+#repos-list {
+  list-style: none;
+  padding: 0;
+}
+
+#repos-list li {
+  margin: 0.5rem 0;
+}
+
+#chat-window {
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+.message {
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+}
+
+.user {
+  background: #d1f7d6;
+  text-align: right;
+}
+
+.bot {
+  background: #e1e9ff;
+  text-align: left;
+}
+
+form {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+form input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0 8px 8px 0;
+  background: #4b6cb7;
+  color: white;
+  cursor: pointer;
+}
+				</style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <h1>✨ Mi IA Ética y Personal ✨</h1>
+  </header>
+
+  <main>
+    <!-- Repositorios -->
+    <section id="repositorios">
+      <h2>📦 Mis Repositorios</h2>
+      <ul id="repos-list"></ul>
+    </section>
+
+    <!-- Chatbot -->
+    <section id="chatbot">
+      <h2>🤖 Chat IA</h2>
+      <div id="chat-window"></div>
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Escribe aquí..." required>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hecho con ❤️ y ética.</p>
+  </footer>
+
+				<!--  <script type="module" src="script.js"></script>-->
+				<script>
+				const resp = await fetch("https://api.openai.com/v1/chat/completions", {
+  method: "POST", headers: { "Content-Type": "application/json", "Authorization": "Bearer TU_API_KEY" },
+  body: JSON.stringify({ model: "gpt-4", messages: [{role:"user", content: pregunta}] })
+});
+const data = await resp.json();
+mostrarRespuesta(data.choices[0].message.content);
+				// =============== Repositorios ===============
+async function cargarRepos() {
+  try {
+    // Opción 1: Desde GitHub API
+    const resp = await fetch("https://api.github.com/users/ozclef/repos");
+    const repos = await resp.json();
+
+    // Opción 2: Desde archivo local JSON (offline)
+    // const repos = await (await fetch("data/repos.json")).json();
+
+    const list = document.getElementById("repos-list");
+    repos.forEach(r => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${r.html_url}" target="_blank">${r.name}</a>`;
+      list.appendChild(li);
+    });
+  } catch (e) {
+    console.error("Error cargando repos:", e);
+  }
+}
+
+// =============== Chat IA ===============
+const chatWindow = document.getElementById("chat-window");
+const form = document.getElementById("chat-form");
+const input = document.getElementById("user-input");
+
+function addMessage(text, sender="user") {
+  const div = document.createElement("div");
+  div.classList.add("message", sender);
+  div.textContent = text;
+  chatWindow.appendChild(div);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = input.value;
+  addMessage(text, "user");
+  input.value = "";
+
+  // Simulación respuesta IA con datos locales
+  // (Puedes reemplazar por API fetch a OpenAI o modelo que uses)
+  const respuesta = "Recibido 🤖, pronto responderé con ética y amor.";
+  addMessage(respuesta, "bot");
+});
+
+// =============== Inicializar ===============
+cargarRepos();
+				
+				</script>
+</body>
+</html>
