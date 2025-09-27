@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Reproducción Multimedia</title>
+				
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+				
+				
+				
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+        }
+        .container-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+        }
+        .file-item {
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .file-item:hover {
+            transform: translateY(-2px);
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 lg:p-10 min-h-screen">
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Panel de Archivos -->
+        <div class="lg:col-span-1 container-card h-fit sticky top-10">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Archivos Multimedia</h2>
+            <div id="file-list" class="space-y-3">
+                <!-- Los archivos se cargarán aquí desde JavaScript -->
+                <p class="text-sm text-gray-500">
+                    <i class="fas fa-spinner fa-spin mr-2"></i>Cargando archivos...
+                </p>
+            </div>
+        </div>
+
+        <!-- Reproductores y Controles -->
+        <div class="lg:col-span-2 space-y-8">
+            <!-- Contenedor del Reproductor -->
+            <div class="container-card">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Reproductor de Medios</h2>
+                <div id="media-player-container" class="w-full">
+                    <!-- Aquí se cargará el reproductor (audio o video) -->
+                    <div class="flex items-center justify-center h-64 bg-gray-100 rounded-lg text-gray-500">
+                        <i class="fas fa-info-circle mr-2"></i>Selecciona un archivo para empezar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+								<div>
+								
+								https://1024terabox.com/s/1Pg8l-zeXE-gQ49xnBcpXAA
+								<a href="https://1024terabox.com/s/1Pg8l-zeXE-gQ49xnBcpXAA">TeraBox Videos Cumpleños 05_sept-2025</a>
+								<iframe src="https://1024terabox.com/s/1Pg8l-zeXE-gQ49xnBcpXAA"></iframe>
+				</div>
+				<div>
+								
+								<iframe src="https://1024terabox.com/s/1WzcFhqZymfCKjtJ8gDdDkQ"></iframe>
+								https://1024terabox.com/s/1WzcFhqZymfCKjtJ8gDdDkQ
+				</div>
+								
+				<div> 
+								<a href="https://1024terabox.com/s/1hkwW2SNs_sfNOxOb_zrGGg">carpeta audios</a>
+								<iframe src="https://1024terabox.com/s/1hkwW2SNs_sfNOxOb_zrGGg"></iframe>
+				</div>
+				
+				
+
+    <script>
+        // Objeto que simula nuestra 'base de datos' de archivos.
+        // Cada objeto tiene una ruta, un nombre y un tipo.
+        const filesDB = [
+            { path: 'https://www.w3schools.com/html/mov_bbb.mp4', name: 'Video de Muestra', type: 'video' },
+            { path: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', name: 'Música Relajante', type: 'audio' },
+            { path: 'https://samplelib.com/lib/download/mp3/sample-15s.mp3', name: 'Sample de Audio', type: 'audio' },
+            { path: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4', name: 'Trailer Sintel', type: 'video' }
+        ];
+				
+    <
+			//	<script>
+				const filesDB = [
+            { path: '', name: ' ', type: 'video' },
+            { path: '', name: 'Música Relajante', type: 'audio' },
+            { path: '', name: 'Sample de Audio', type: 'audio' },
+            { path: ''', name: 'Trailer Sintel', type: 'video' }
+        ];
+				
+				
+        const fileList = document.getElementById('file-list');
+        const mediaPlayerContainer = document.getElementById('media-player-container');
+
+        /**
+         * Renderiza la lista de archivos en el panel izquierdo.
+         */
+        function renderFileList() {
+            fileList.innerHTML = ''; // Limpiar la lista antes de renderizar
+            filesDB.forEach(file => {
+                const icon = file.type === 'video' ? 'fa-video' : 'fa-music';
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item flex items-center p-3 rounded-lg bg-gray-50 shadow-sm';
+                fileItem.innerHTML = `
+                    <i class="fas ${icon} text-gray-500 mr-4"></i>
+                    <span class="font-medium">${file.name}</span>
+                `;
+                // Añadir un evento de clic a cada elemento de archivo
+                fileItem.addEventListener('click', () => loadMedia(file));
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        /**
+         * Carga el archivo seleccionado en el reproductor correspondiente.
+         * @param {Object} file - El objeto del archivo a cargar.
+         */
+                
+        function loadMedia(file) {
+            mediaPlayerContainer.innerHTML = ''; // Limpiar el contenedor actual
+
+            let mediaElement;
+            if (file.type === 'video') {
+                mediaElement = document.createElement('video');
+                mediaElement.className = 'w-full rounded-lg shadow-lg';
+                mediaElement.setAttribute('poster', 'https://placehold.co/600x400/2c3e50/ecf0f1?text=Reproduciendo+Video');
+            } else {
+                mediaElement = document.createElement('audio');
+                mediaElement.className = 'w-full rounded-lg shadow-lg';
+            }
+            
+            mediaElement.src = file.path;
+            mediaElement.setAttribute('controls', '');
+            mediaElement.setAttribute('autoplay', '');
+        				
+        				// Opcional: para que se reproduzca automáticamente
+
+            mediaPlayerContainer.appendChild(mediaElement);
+        }
+
+        // Renderizar la lista de archivos al cargar la página
+        window.onload = renderFileList;
+            				
+            }}
+				--> //
+				
+    </script>
+</body>
+</html>

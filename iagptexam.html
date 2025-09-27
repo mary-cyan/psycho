@@ -1,0 +1,293 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Compendio — Documentación Oscar Cruz Díaz</title>
+<style>
+  :root{ --accent:#6c63ff; --muted:#6b7280; --card:#fff; font-family:system-ui,Arial;}
+  body{background:#f6f7fb;margin:0;color:#111}
+  .wrap{max-width:980px;margin:28px auto;padding:18px}
+  header{display:flex;gap:14px;align-items:center}
+  .logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#9b8cff);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(17,24,39,0.06);margin-top:12px}
+  h1,h2{margin:6px 0}
+  textarea,input{width:100%;padding:8px;border-radius:8px;border:1px solid #e9e9f2}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:16px}
+  .section{padding:12px}
+  .controls{display:flex;gap:8px;margin-top:12px}
+  button{background:var(--accent);color:#fff;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
+  button.secondary{background:#fff;border:1px solid #e6e6ff;color:var(--accent)}
+  pre{background:#f3f4ff;padding:10px;border-radius:8px;overflow:auto}
+  @media print{ .controls, header {display:none} body{background:#fff} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" id="logo">OC</div>
+    <div>
+      <h1 id="mainTitle">Compendio — Oscar Cruz Díaz</h1>
+      <div style="color:var(--muted)">Resumen compilado — editable. Usa "Exportar JSON" para respaldar.</div>
+    </div>
+  </header>
+
+  <div class="card grid">
+    <div class="section left">
+      <h2>Resumen consolidado (edita aquí)</h2>
+      <textarea id="resumen" rows="6">Accidente laboral el 26/02/2025 en FullGas Tlaxcala. Problemas con IMSS en la atención y documentación. Robo de cartera en hospital, recuperada sin efectivo. Antecedentes laborales en OXXO con carta de recomendación y acta administrativa previa. Deseo continuar con trámites legales y documentar cronología y evidencias.</textarea>
+
+      <h2 style="margin-top:14px">Cronología y evidencias</h2>
+      <textarea id="cronologia" rows="6">26/02/2025 - Accidente laboral (FullGas). ...</textarea>
+
+      <h2 style="margin-top:14px">Perfiles y psicometría</h2>
+      <textarea id="perfil" rows="6">Psicológico: Sensible, introspectivo, empático. ...</textarea>
+
+      <h2 style="margin-top:14px">Declaración en primera persona</h2>
+      <textarea id="primera" rows="5">Yo, Oscar Cruz Díaz, declaro que actúo con honestidad...</textarea>
+
+      <div style="margin-top:10px;">
+        <button id="exportJson">Exportar JSON</button>
+        <button class="secondary" id="downloadHtml">Guardar HTML</button>
+        <button class="secondary" id="printBtn">Imprimir / Guardar PDF</button>
+      </div>
+
+      <h2 style="margin-top:14px">JSON preview</h2>
+      <pre id="jsonPreview"></pre>
+    </div>
+
+    <aside class="section right">
+      <h2>Datos personales</h2>
+      <label>Nombre</label>
+      <input id="nombre" value="Oscar Cruz Díaz"/>
+      <label style="margin-top:8px">Correo</label>
+      <input id="correo" value="Oscar.clef.14@gmail.com"/>
+      <label style="margin-top:8px">CURP / RFC</label>
+      <input id="curp" value="CUDO000714HTLRZSA8"/>
+      <input id="rfc" value="CUDO000714Q61" style="margin-top:6px"/>
+
+      <h2 style="margin-top:12px">Perfiles (valores)</h2>
+      <label>Empatía</label><input id="p_emp" value="75"/>
+      <label style="margin-top:6px">Responsabilidad</label><input id="p_resp" value="88"/>
+      <label style="margin-top:6px">Comunicación</label><input id="p_com" value="80"/>
+
+      <h2 style="margin-top:12px">Checklist rápido</h2>
+      <div style="font-size:14px;color:var(--muted)">
+        <ol>
+          <li>Recopilar expediente IMSS (RT7, triage, folios).</li>
+          <li>Subir/archivar cartas de recomendación y actas.</li>
+          <li>Registrar testimonios y contactos.</li>
+          <li>Generar PDF certificado / declaración.</li>
+        </ol>
+      </div>
+
+    </aside>
+  </div>
+
+  <div style="margin-top:12px" class="card">
+    <h2>Instrucciones rápidas</h2>
+    <ol>
+      <li>Editar los textos arriba para que reflejen exactamente tus palabras.</li>
+      <li>Click "Exportar JSON" para descargar un respaldo que puedes enviar por correo o guardar en la nube.</li>
+      <li>Imprime o guarda como PDF el resumen y la declaración para entregarlo en oficinas.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+const buildJson = ()=>{
+  const obj = {
+    persona:{
+      nombre: document.getElementById('nombre').value,
+      correo: document.getElementById('correo').value,
+      curp: document.getElementById('curp').value,
+      rfc: document.getElementById('rfc').value
+    },
+    resumen: document.getElementById('resumen').value,
+    cronologia: document.getElementById('cronologia').value,
+    perfil: document.getElementById('perfil').value,
+    declaracion: document.getElementById('primera').value,
+    psicometria:{
+      empatia: Number(document.getElementById('p_emp').value),
+      responsabilidad: Number(document.getElementById('p_resp').value),
+      comunicacion: Number(document.getElementById('p_com').value)
+    },
+    fecha_export: new Date().toISOString()
+  };
+  return obj;
+};
+
+document.getElementById('exportJson').addEventListener('click', ()=>{
+  const data = buildJson();
+  document.getElementById('jsonPreview').innerText = JSON.stringify(data, null, 2);
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (data.persona.nombre || 'respaldo') + '_backup.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('downloadHtml').addEventListener('click', ()=>{
+  const docHtml = '<!doctype html>\\n' + document.documentElement.outerHTML;
+  const blob = new Blob([docHtml], {type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (document.getElementById('nombre').value || 'compendio') + '.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+</script>
+
+				
+				<!----)
+
+
+/*
+---
+
+📂 Estructura simple
+
+/mi-proyecto-ia
+ ├─ index.html
+ ├─ style.css
+ ├─ script.js
+ └─ data/
+     └─ chats.json
+
+
+---
+
+📄 data/chats.json
+
+Aquí puedes ir guardando tus conversaciones o datos personales.
+
+[
+  {
+    "user": "Oscarito",
+    "message": "hola, cómo estás?",
+    "bot": "todo bien 💙, aquí contigo"
+  },
+  {
+    "user": "Oscarito",
+    "message": "qué opinas de mi?",
+    "bot": "eres una persona valiosa, ética y con mucho potencial ✨"
+  },
+  {
+    "user": "Oscarito",
+    "message": "recordar guardar datos?",
+    "bot": "sí, puedo usar localStorage para recordar entre sesiones 🔑"
+  }
+]
+*/
+
+---
+
+⚙️ script.js (con localStorage)
+---->
+
+<script>
+// =================== CHAT ===================
+const chatWindow = document.getElementById("chat-window");
+const form = document.getElementById("chat-form");
+const input = document.getElementById("user-input");
+
+// cargar historial del localStorage
+let historial = JSON.parse(localStorage.getItem("chatHistorial")) || [];
+
+function renderHistorial() {
+  chatWindow.innerHTML = "";
+  historial.forEach(m => {
+    addMessage(m.text, m.sender, false);
+  });
+}
+renderHistorial();
+
+function addMessage(text, sender="user", save=true) {
+  const div = document.createElement("div");
+  div.classList.add("message", sender);
+  div.textContent = text;
+  chatWindow.appendChild(div);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+
+  if (save) {
+    historial.push({ text, sender });
+    localStorage.setItem("chatHistorial", JSON.stringify(historial));
+  }
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = input.value;
+  addMessage(text, "user");
+  input.value = "";
+
+  // ejemplo: buscar respuesta en chats.json
+  const datos = await (await fetch("data/chats.json")).json();
+  let respuesta = "mmm no encontré nada 🤔";
+
+  const coincidencia = datos.find(d => text.toLowerCase().includes(d.message.toLowerCase()));
+  if (coincidencia) respuesta = coincidencia.bot;
+
+  addMessage(respuesta, "bot");
+});
+
+// en tu navegador, consola
+fetch('mis_chats_exportados.json')
+  .then(r => r.json())
+  .then(data => {
+    let txt = '';
+    data.forEach(chat => {
+      txt += `--- Conversación ${chat.title} ---\n`;
+      chat.messages.forEach(m => {
+        txt += `${m.author}: ${m.content}\n`;
+      });
+      txt += '\n\n';
+    });
+    // descargar como .txt
+    const blob = new Blob([txt], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'mis_conversaciones.txt';
+    a.click();
+  });
+</script>
+				
+				
+				
+				</body>
+</html>
+
+<!----
+---
+
+✨ Qué logras con esto
+
+✅ Guardar en localStorage → cada vez que hables, tu historial se queda en el navegador, aunque cierres la pestaña.
+
+✅ Leer un chats.json local → puedes alimentar al bot con tus datos personales o ejemplos de respuestas.
+
+✅ Sin servidor → todo corre en tu navegador (ni Vercel, ni Firebase, ni Replit).
+
+✅ Puedes crecerlo → mañana conectas un API real de IA con fetch, y ya estará lista la estructura.
+
+
+
+---
+
+👉 Con esto ya tienes lo básico:
+
+1. El bot responde con ejemplos de tu chats.json.
+

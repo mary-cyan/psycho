@@ -1,0 +1,237 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Certificado Personal — Resumen Profesional</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --accent:#6c63ff;
+      --muted:#6b7280;
+      --good:#16a34a;
+      --glass: rgba(255,255,255,0.7);
+      --paper:#fffdf8;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#f3f4ff 0%,var(--bg) 100%);color:#111;}
+    .container{max-width:900px;margin:36px auto;padding:24px;}
+    .card{background:var(--card);border-radius:14px;box-shadow:0 8px 30px rgba(17,24,39,0.08);overflow:hidden;}
+    header{display:flex;align-items:center;gap:18px;padding:22px 28px;border-bottom:1px solid #f0f0f3;}
+    .logo{
+      width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#9b8cff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:22px;box-shadow:0 6px 18px rgba(108,99,255,0.18);
+    }
+    .hdr-text h1{margin:0;font-size:18px;letter-spacing:-0.2px;}
+    .hdr-text p{margin:2px 0 0;color:var(--muted);font-size:13px;}
+    main{display:grid;grid-template-columns:1fr 360px;gap:20px;padding:22px 28px;}
+    .section{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.8));padding:18px;border-radius:10px;}
+    h2{margin:0 0 10px;font-size:15px;color:#111;}
+    p{margin:0 0 10px;color:var(--muted);line-height:1.45;font-size:14px;}
+    .summary{white-space:pre-line;background:linear-gradient(180deg,#fff,#fbfbff);padding:14px;border-radius:8px;border:1px solid #f2f2f6;}
+    .profile-list{display:flex;flex-direction:column;gap:10px;}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#f3f4ff;color:var(--accent);font-weight:600;font-size:13px;}
+    .meter{height:10px;background:#eef2ff;border-radius:999px;overflow:hidden;}
+    .meter > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#8b5cf6);border-radius:999px;}
+    .right-col{position:relative;padding:12px;}
+    .certificate{background:linear-gradient(180deg,var(--paper),#fff);padding:18px;border-radius:10px;border:1px solid #efe9e0;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);}
+    .cert-title{font-size:18px;font-weight:700;color:#333;margin-bottom:6px;}
+    .cert-sub{color:var(--muted);font-size:13px;margin-bottom:18px;}
+    .cert-name{font-size:22px;font-weight:800;color:var(--accent);margin:6px 0;}
+    .signature{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .sig-line{flex:1;border-top:1px dashed #e6e0ff;padding-top:8px;text-align:center;color:var(--muted);font-size:13px;}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;padding:18px;border-top:1px solid #f6f6fb;}
+    button{background:var(--accent);color:white;border:0;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(108,99,255,0.12);}
+    button.secondary{background:#fff;border:1px solid #e8e8ff;color:var(--accent);font-weight:700;}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px;}
+    input[type="text"], textarea, input[type="date"]{width:100%;padding:10px;border-radius:8px;border:1px solid #eaeaf2;background:white;font-size:14px;}
+    textarea{min-height:84px;resize:vertical;}
+    footer{padding:14px 28px;color:var(--muted);font-size:13px;background:transparent;text-align:center;}
+    /* print */
+    @media print {
+      body{background:white}
+      .container{box-shadow:none;padding:0;margin:0}
+      header, .controls, footer {display:none}
+      main{grid-template-columns:1fr;gap:8px;padding:0}
+      .card{border-radius:0;box-shadow:none}
+      .certificate{page-break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" id="mainCard">
+      <header>
+        <div class="logo" id="logoLetters">CP</div>
+        <div class="hdr-text">
+          <h1 id="titleText">Certificado Personal — Resumen Profesional y Perfil</h1>
+          <p id="subtitle">Documento auto-generado — declaración personal y presentación resumida</p>
+        </div>
+      </header>
+
+      <main>
+        <section class="section left">
+          <h2>Resumen profesional</h2>
+          <div class="summary" id="summaryText" contenteditable="true">
+Soy [Tu nombre]. Profesional comprometido con la mejora continua, responsable en el trabajo, con experiencia en atención al cliente, manejo de procesos y trabajo en equipo. Poseo habilidades en resolución de problemas, comunicación efectiva y aprendizaje autodidacta. Me destaco por la honestidad, la puntualidad y la disposición para colaborar y aprender.
+          </div>
+
+          <h2 style="margin-top:14px">Perfiles (editable)</h2>
+          <div class="profile-list">
+            <div>
+              <label>Perfil psicológico (breve)</label>
+              <textarea id="psychProfile">Sensibilidad alta hacia las necesidades ajenas, tendencia a la introspección, capacidad para empatizar y compromiso con normas y responsabilidades. Manejo emocional en proceso de fortalecimiento y búsqueda activa de crecimiento personal.</textarea>
+            </div>
+
+            <div>
+              <label>Perfil psicométrico (autoinforme — plantilla)</label>
+              <p style="margin:6px 0;color:var(--muted);font-size:13px">Rellena o ajusta las barras según tu autopercepción.</p>
+              <div style="display:grid;gap:8px;">
+                <div><label>Empatía <span id="valEmp">75%</span></label><div class="meter"><i style="width:75%"></i></div></div>
+                <div><label>Responsabilidad <span id="valResp">88%</span></label><div class="meter"><i style="width:88%"></i></div></div>
+                <div><label>Adaptabilidad <span id="valAdapt">70%</span></label><div class="meter"><i style="width:70%"></i></div></div>
+                <div><label>Comunicación <span id="valComm">80%</span></label><div class="meter"><i style="width:80%"></i></div></div>
+              </div>
+              <p style="font-size:13px;color:var(--muted);margin-top:8px">Nota: Esto es una representación de autopercepción, no un diagnóstico profesional.</p>
+            </div>
+
+            <div>
+              <label>Ético — Valores</label>
+              <textarea id="ethic">Transparencia, honestidad, respeto por los demás, cumplimiento de compromisos y disposición a reparar errores. Priorizo el trato digno y la justicia en los actos cotidianos.</textarea>
+            </div>
+
+            <div>
+              <label>Moral (principios personales)</label>
+              <textarea id="moral">Creo en la responsabilidad personal, la empatía activa y en actuar de forma coherente con mis convicciones. Valoro la lealtad, la humildad y el esfuerzo constante.</textarea>
+            </div>
+          </div>
+
+          <h2 style="margin-top:14px">Percepción en primera persona (tu voz)</h2>
+          <div class="summary" id="firstPerson" contenteditable="true">
+Me considero una persona que busca hacer lo correcto, que aprende de sus errores y que trata a los demás con respeto. A veces me siento vulnerable, pero eso me impulsa a mejorar cada día. Mi intención es construir relaciones sanas y ser una presencia positiva para quienes me rodean.
+          </div>
+
+          <h2 style="margin-top:14px">Opinión amable (del asistente)</h2>
+          <p id="assistantOpinion">Desde una mirada empática: reconoces tus esfuerzos y tu disposición a aprender. Esa constancia y honestidad son rasgos que cuentan mucho en la vida personal y profesional. Mantén esa curiosidad y esa luz, te ayudarán siempre.</p>
+        </section>
+
+        <aside class="right-col section">
+          <div class="certificate" id="certificate">
+            <div class="cert-title">Certificado de Buena Conducta Personal (Autodeclaración)</div>
+            <div class="cert-sub">Documento personal y no oficial — declara rasgos y compromisos personales</div>
+
+            <div style="margin:8px 0;">
+              <div style="font-size:13px;color:var(--muted)">Otorgado a</div>
+              <div class="cert-name" id="certName">[Tu nombre aquí]</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:6px" id="certReason">Por demostrar honestidad, responsabilidad y empatía en su conducta diaria.</div>
+            </div>
+
+            <div style="margin-top:12px;font-size:13px;color:var(--muted)">
+              Fecha: <span id="certDate"></span>
+            </div>
+
+            <div class="signature">
+              <div class="sig-line" id="sigLeft">Firma: <span id="sigName">[Firma digital]</span></div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <label for="fullName">Nombre completo para certificado</label>
+            <input id="fullName" type="text" placeholder="Ej. Oscar Cruz Díaz" />
+
+            <label style="margin-top:10px">Fecha del certificado</label>
+            <input id="certDateInput" type="date" />
+
+            <label style="margin-top:10px">Firma (texto) </label>
+            <input id="signatureInput" type="text" placeholder="Tu firma o seudónimo" />
+          </div>
+        </aside>
+      </main>
+
+      <div class="controls">
+        <button id="applyBtn">Aplicar cambios al certificado</button>
+        <button class="secondary" id="downloadHtml">Guardar como HTML</button>
+        <button class="secondary" id="printBtn">Imprimir / Guardar como PDF</button>
+      </div>
+
+      <footer>
+        <small>Este certificado es una declaración personal y sirve como resumen profesional y de valores. No sustituye certificados oficiales ni evaluaciones profesionales.</small>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Inicialización básica
+    const today = new Date();
+    const isoDate = today.toISOString().slice(0,10);
+    document.getElementById('certDate').innerText = new Date().toLocaleDateString();
+    document.getElementById('certDateInput').value = isoDate;
+
+    // Apply changes button
+    document.getElementById('applyBtn').addEventListener('click', ()=>{
+      const name = document.getElementById('fullName').value.trim() || '[Tu nombre aquí]';
+      const dateVal = document.getElementById('certDateInput').value || isoDate;
+      const sig = document.getElementById('signatureInput').value.trim() || '[Firma digital]';
+
+      document.getElementById('certName').innerText = name;
+      // format date nicely
+      const d = new Date(dateVal + 'T00:00:00');
+      document.getElementById('certDate').innerText = d.toLocaleDateString();
+      document.getElementById('sigName').innerText = sig;
+
+      // Put name in header logo letters
+      const initials = name.split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase() || 'CP';
+      document.getElementById('logoLetters').innerText = initials;
+
+      // Update title with name lightly
+      document.getElementById('titleText').innerText = `Certificado Personal — ${name}`;
+    });
+
+    // Print button
+    document.getElementById('printBtn').addEventListener('click', ()=>{
+      window.print();
+    });
+
+    // Download HTML (simple)
+    document.getElementById('downloadHtml').addEventListener('click', ()=>{
+      const docHtml = '<!doctype html>\\n' + document.documentElement.outerHTML;
+      const blob = new Blob([docHtml], {type: 'text/html'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      const filename = (document.getElementById('fullName').value.trim() || 'certificado') + '.html';
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // Allow simple editing of psychometric percents by clicking bars (try it)
+    document.querySelectorAll('.meter i').forEach((bar)=>{
+      bar.parentElement.addEventListener('click', (e)=>{
+        const rect = e.currentTarget.getBoundingClientRect();
+        const pct = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+        bar.style.width = pct + '%';
+        // update corresponding label if exists (a bit hacky: find nearest label text)
+        const parent = e.currentTarget.parentElement.parentElement;
+        const span = parent.querySelector('span');
+        if(span) span.innerText = pct + '%';
+      });
+    });
+
+    // Small UX: apply initial defaults for signature fields
+    document.getElementById('signatureInput').value = '[Tu firma]';
+    document.getElementById('fullName').value = '';
+  </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guardado Local con localStorage</title>
+
+<style>
+/*
+Y algo de CSS básico (opcional) para los mensajes:
+*/
+
+html, body { height: 100%; font-family: sans-serif; background: linear-gradient(#f3f4f6 0%, blue 10%) }
+
+  /* ====== LAYOUT DESKTOP ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 25% 1.2fr 25%;
+    height: 80vh;
+    margin-top: 11vh;
+  }
+  aside, main {
+    overflow-y: auto;
+    padding: 10px;
+  }
+  aside { background: linear-gradient(120deg, #e5e7eb 0%, green 100%); }
+  main { background: #fff; }
+
+  /* ====== NAVBAR SUPERIOR ====== */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 10vh;
+    background: linear-gradient(90deg, skyblue 0%, white 100%);
+    color: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px solid black;
+    z-index: 1000;
+    margin: 3px solid black;
+    border: solid;
+    padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .navbar h1 { font-size: 1.2rem; }
+  .navbar button {
+    background: rgba(255,255,255,0.2);
+    border: solid;
+    padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 9vh; width: 10vh
+  }
+#mensaje {
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+
+#mensaje.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+#mensaje.error {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+  /* ====== MOBILE ====== */
+  @media (max-width: 768px) {
+    .layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1.3fr auto;
+    }
+    aside {
+      display: none; /* ocultar sidebars por defecto */
+    }
+    aside.active {
+      display: block;
+      position: fixed;
+      top: 80px;
+      bottom: 0;
+      width: 80%;
+      z-index: 999;
+    }
+    aside.left { left: 0; }
+    aside.right { right: 0; }
+  }
+
+  /* ====== IFRAMES ====== */
+  iframe {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
+    background: white;
+  }
+ }
+</style>
+</head>
+<body>
+  
+  <!-- NAV BAR -->
+				
+				<div class="navbar">
+  <button onclick="toggleSidebar('left')">☰</button>
+  <h1>oz</h1><a href="ia">home</a>
+  <button onclick="toggleSidebar('right')">☰</button>
+</div>
+  
+  <!--    LAYOUT MENU -->
+  
+				<div class="layout" style="padding-top:50px;">
+  <aside class="left">
+    <iframe src="generadorCodes.html"></iframe>
+  </aside>
+  <main>
+
+
+    <h1>Estado de Xbox</h1>
+
+Y en el HTML, agrega un elemento para mostrar los mensajes:
+<div id="mensaje">ready</div>
+    <br>
+
+    <label for="nombreJuego">Nombre del Juego:</label>
+    <input type="text" id="nombreJuego" value=""><br><br>
+
+    <label for="progreso">Progreso (%):</label>
+    <input type="number" id="progreso" value="0"><br><br>
+
+    <label for="dificultad">Dificultad:</label>
+    <select id="dificultad">
+        <option value="facil">Fácil</option>
+        <option value="normal">Normal</option>
+        <option value="dificil">Difícil</option>
+    </select><br><br>
+
+    <button onclick="guardarEstado()">Guardar Estado</button> <br>
+    <button onclick="cargarEstado()">Cargar Estado</button>
+
+      				
+  </main>
+  <aside class="right">
+  				    <iframe src="" style="width:50vh;"></iframe>--
+  </aside>
+				<script>
+  // Lógica para mostrar/ocultar sidebars en móvil
+  function toggleSidebar(side) {
+    const aside = document.querySelector(`aside.${side}`);
+    aside.classList.toggle('active');
+  }
+
+  // Centrar contenido aunque haya zoom
+  window.addEventListener('resize', centerLayout);
+  window.addEventListener('load', centerLayout);
+  function centerLayout() {
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+  }
+</script>
+
+    
+    <script>
+        // Aquí irá el código JavaScript
+ 
+
+//**2. Código JavaScript con localStorage y JSON:**
+// Clave para guardar en localStorage (importante para evitar conflictos)
+
+
+
+const claveLocalStorage = "xboxEstado";
+
+function guardarEstado() {
+
+    // 1. Recolectar los datos del juego
+
+    const nombreJuego = document.getElementById("nombreJuego").value;
+    const progreso = document.getElementById("progreso").value;
+    const dificultad = document.getElementById("dificultad").value;
+
+    // 2. Crear un objeto con los datos
+    const estadoXbox = {
+        nombreJuego: nombreJuego,
+        progreso: progreso,
+        dificultad: dificultad
+    };
+
+    // 3. Convertir el objeto a JSON
+
+  //  const estadoXboxJSON = JSON.stringify(estadoXbox);
+
+    // 4. Guardar el JSON en localStorage
+
+//    localStorage.setItem(claveLocalStorage, estadoXboxJSON);
+
+    alert("Estado guardado!");  // Feedback al usuario
+}
+
+
+function cargarEstado() {
+   // // 1. Obtener el JSON desde localStorage
+    const estadoXboxJSON = localStorage.getItem(claveLocalStorage);
+
+    // 2. Verificar si hay algo guardado
+    if (estadoXboxJSON === null) {
+        alert("No hay estado guardado.");
+        return; // Salir de la función si no hay nada
+    }
+
+    // 3. Convertir el JSON a objeto JavaScript
+    const estadoXbox = JSON.parse(estadoXboxJSON);
+
+    // 4.  Cargar los datos en los campos del formulario
+    document.getElementById("nombreJuego").value = estadoXbox.nombreJuego;
+    document.getElementById("progreso").value = estadoXbox.progreso;
+    document.getElementById("dificultad").value = estadoXbox.dificultad;
+
+    alert("Estado cargado!"); // Feedback al usuario
+}
+
+
+// Cargar el estado automáticamente al cargar la página (opcional)
+window.onload = function() {
+  cargarEstado(); // Intenta cargar el estado al cargar la página
+};
+
+
+const claveLocalStorage = "xboxEstado";
+
+function mostrarMensaje(mensaje, tipo = 'info') {
+    const mensajeElement = document.getElementById('mensaje');
+    mensajeElement.textContent = mensaje;
+    mensajeElement.className = tipo; // 'info', 'error', 'success'
+}
+
+function guardarEstado() {
+    const nombreJuego = document.getElementById("nombreJuego").value;
+    const progreso = document.getElementById("progreso").value;
+    const dificultad = document.getElementById("dificultad").value;
+
+    const estadoXbox = {
+        nombreJuego: nombreJuego,
+        progreso: progreso,
+        dificultad: dificultad
+    };
+
+
+    try {
+        const estadoXboxJSON = JSON.stringify(estadoXbox);
+        localStorage.setItem(claveLocalStorage, estadoXboxJSON);
+        mostrarMensaje("Estado guardado correctamente.", 'success');
+    } catch (error) {
+        console.error("Error al guardar el estado:", error);
+        mostrarMensaje("Error al guardar el estado.  Verifica la consola.", 'error');
+    }
+}
+
+function cargarEstado() {
+    try {
+        const estadoXboxJSON = localStorage.getItem(claveLocalStorage);
+
+        if (estadoXboxJSON === null) {
+            mostrarMensaje("No hay estado guardado.");
+            return;
+        }
+
+        const estadoXbox = JSON.parse(estadoXboxJSON);
+
+        document.getElementById("nombreJuego").value = estadoXbox.nombreJuego;
+        document.getElementById("progreso").value = estadoXbox.progreso;
+        document.getElementById("dificultad").value = estadoXbox.dificultad;
+
+        mostrarMensaje("Estado cargado correctamente.", 'success');
+
+    } catch (error) {
+        console.error("Error al cargar el estado:", error);
+        mostrarMensaje("Error al cargar el estado. Verifica la consola.", 'error');
+    }
+}
+
+
+window.onload = function() {
+    cargarEstado();
+};
+</script>
+
+
+
+</body>
+</html>
+
+
+
+<!----
+**Explicación detallada:** * **`claveLocalStorage = "xboxEstado";`**: Esta es la clave con la que guardarás y recuperarás los datos en `localStorage`. Es *crucial* usar una clave única para evitar que tu aplicación interfiera con otras que puedan estar usando `localStorage` en el mismo dominio. Cámbiala si es necesario para que sea específica de tu juego o aplicación. * **`guardarEstado()`**: * **Recolecta los datos:** Obtiene los valores de los campos de entrada (inputs, selects, etc.) en tu formulario HTML. Asegúrate de que los IDs de los elementos en `document.getElementById()//qe t/ñ/u aplicación interfiera con otras que puedan estar usando `localStorage` en el mismo dominio. Cámbiala si es necesario para que sea específica de tu juego o aplicación. * **`guardarEstado()`**: * **Recolecta los datos:** Obtiene los valores de los campos de entrada (inputs, selects, etc.) en tu formulario HTML. Asegúrate de que los IDs de los elementos en `document.getElementById()` coincidan con los IDs en tu HTML. * **Crea un objeto:** Crea un objeto JavaScript (`estadoXbox`) que contiene todos los datos que deseas guardar. La estructura de este objeto depende de la información que necesitas persistir. * **Convierte a JSON:** Usa `JSON.stringify(estadoXbox)` para convertir el objeto JavaScript a una cadena JSON. `localStorage` solo puede almacenar cadenas de texto. * **Guarda en localStorage:** Usa `localStorage.setItem(claveLocalStorage, estadoXboxJSON)` para guardar la cadena JSON en `localStorage`. El primer argumento es la clave (el nombre con el que guardarás los datos) y el segundo es el valor (la cadena JSON). * **Feedback al usuario:** Un `alert()` simple informa al usuario que el estado ha sido guardado. Considera usar algo más sutil (un mensaje en la página, un icono de éxito) para una mejor experiencia de usuario. * **`cargarEstado()`**: * **Obtiene el JSON:** Usa `localStorage.getItem(claveLocalStorage)` para obtener la cadena JSON desde `localStorage` usando la misma clave que usaste para guardar. * **Verifica si existe:** Es *fundamental* verificar si hay algo guardado en `localStorage` antes de intentar cargarlo. `localStorage.getItem()` devuelve `null` si no hay nada guardado con esa clave. Si intentas usar `JSON.parse(null)`, obtendrás un error. * **Convierte de JSON a objeto:** Usa `JSON.parse(estadoXboxJSON)` para convertir la cadena JSON de vuelta a un objeto JavaScript. * **Carga los datos en el formulario:** Asigna los valores del objeto JavaScript a los campos de entrada correspondientes en tu formulario HTML. Asegúrate de que los IDs sean correctos. * **Feedback al usuario:** Informa al usuario que el estado ha sido cargado. * **`window.onload` (carga automática opcional):** * Esta función se ejecuta automáticamente cuando la página web se ha cargado completamente. * Llama a `cargarEstado()` dentro de `window.onload` para intentar cargar el estado guardado cada vez que la página se abre o se recarga. Esto hace que la aplicación recuerde el estado automáticamente sin necesidad de que el usuario presione el botón "Cargar Estado". **Consideraciones y mejoras:** * **Manejo de errores:** Agrega bloques `try...catch` alrededor de `JSON.parse()` y `localStorage.setItem()` para capturar errores que puedan ocurrir (por ejemplo, si el JSON está corrupto o si `localStorage` está lleno). Esto hará que tu aplicación sea más robusta. * **Validación de datos:** Antes de guardar el estado, valida los datos que ingresa el usuario (por ejemplo, asegúrate de que el progreso sea un número entre 0 y 100). Esto evita que se guarden datos incorrectos. * **Experiencia de usuario:** Reemplaza los `alert()` con mensajes más sutiles en la página. Considera usar un sistema de notificaciones o simplemente actualizar el contenido de un elemento HTML existente. * **Estructura de datos:** Si tienes muchos datos que guardar, considera usar una estructura de datos más compleja (por ejemplo, un array de objetos). Asegúrate de que la estructura de datos sea consistente y fácil de manejar. * **Limpieza de localStorage:** `localStorage` tiene un límite de tamaño (generalmente 5MB por dominio). Si guardas muchos datos, podrías alcanzar este límite. Considera limpiar datos antiguos o innecesarios periódicamente. **Ejemplo con manejo de errores y una mejor experiencia de usuario:**
+---->
+
+
+
+
+

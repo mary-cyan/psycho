@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+				<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+				
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="google-signin-client_id" content="387936576242-iejdacrjljds7hf99q0p6eqna8rju3sb.apps.googleusercontent.com">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+				
+				
+  <meta name="apple-mobile-web-app-title" content="auto_gpt_flutter_client">
+				
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>auto_gpt_client</title>
+  <link rel="manifest" href="manifest.json">
+				
+  <base href="/app/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="google-signin-client_id" content="387936576242-iejdacrjljds7hf99q0p6eqna8rju3sb.apps.googleusercontent.com">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="auto_gpt_flutter_client">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+				
+  <link rel="manifest" href="manifest.json">
+
+  
+  <style>
+				
+  svg.ms-w-12 {
+    width: 2rem !important;
+  }
+  svg.ms-h-12 {
+    height: 2rem !important;
+  }
+  /* Temporary solution for the font sizes  */
+				
+		
+  #headlessui-dialog-panel-2 p{
+    font-size: 16px;
+  }
+  #headlessui-dialog-panel-2 textarea{
+    font-size: 16px;
+  }
+  #headlessui-dialog-panel-2 span{
+    font-size: 14px;
+
+  }
+  #headlessui-dialog-panel-2 div{
+    font-size: 16px;
+  }
+  #headlessui-dialog-panel-2 a{
+    font-size: 14px;
+    line-height: 1rem;
+  }
+  #headlessui-dialog-panel-2 button{
+    border: 1px solid #0000001d;
+    line-height: 1rem;
+
+}
+  /* Temporary solution for the font size  */
+ /* 
+  #headlessui-dialog-panel-2 > div > div > div > div.ms-w-full.ms-rounded-xl.ms-flex.ms-flex-col.ms-relative > div > div > div > div > div.ms-flex.ms-flex-row.ms-items-center.ms-justify-between.ms-gap-1 >p{
+    font-size: 14px;
+    line-height: 1rem;
+  }*/
+  
+  p{
+    font-size: 14px;
+    line-height: 1rem;
+  }
+				/*
+  </style>
+				  				
+  <!-----  <title>Chat con Envío de Archivos</title>-->
+  <style>
+    /* Estilos básicos */
+    #chat-container {
+      width: 90%;
+      height: 400px;
+      border: 1px solid #ccc;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+    .message {
+      margin-bottom: 5px;
+      padding: 5px;
+      border: 1px solid #eee;
+    }
+  
+    body {
+     font-family: Arial, sans-serif, robot;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    				
+   .chat-container {
+      width: 90%;
+      max-width: 90%;
+      margin: 5px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: ;
+    }
+    				
+    				
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      padding: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+    .message {
+      margin-bottom: 15px;
+    }
+  
+  
+  
+    .message.user
+  {
+      text-align: right;
+      /*color: #007bff;*/
+    				color: black;
+    				border: 1px;
+    
+    }
+  
+    .message.bot {
+      text-align: left;
+      /*color: #333;*/
+    				color: blue;
+      
+    }
+  
+    .input-area {
+      display: flex;
+      padding: 10px;
+    }
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  
+  
+    .input-area button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  
+  
+  </style>
+</head>
+<body>
+  
+  <!-- NAV BAR ---->
+				<div class="navbar">
+  <button onclick="toggleSidebar('left')">☰</button>
+				  <a href="">pag-princ</a>
+  <button onclick="toggleSidebar('right')">☰</button>
+</div>
+  
+  <!--    LAYOUT MENU ---->
+  
+				<div class="layout" style="padding-top:100px;">
+  <aside class="left">
+    
+    <!--  <iframe src=""></iframe>  --->
+    
+    
+  </aside>
+				  
+				  
+  <main>
+    
+  				<!--MANUU CONTENIDO 
+    <iframe src="archivos de texto y Solic.html" style="width:50vh;"></iframe>-->
+    <h3>welcome to OZ-IA-BIUS</h3>
+    <p>IA by soul-Heard&Mind</p>
+    
+  				<!-- 				  <div class="chat-container">
+    <div class="chat-box" id="chatBox"></div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+  				
+    <p> atencion! los chats escritos no se guardarán, es mejor que los respaldes en algun ligar aparte mientras la beta aun siga. </p>			
+  				
+  				
+
+	<div id="chat-container">
+    <!-- Aquí se mostrarán los mensajes -->
+				<!--			  
+				  -->
+  				
+
+  <div id="chat-container">
+    <!-- Aquí se mostrarán los mensajes -->
+  </div>
+
+  <form id="message-form" enctype="multipart/form-data">
+    <input type="text" id="message-input" placeholder="Escribe tu mensaje">
+    <input type="file" id="file-input" name="archivo">
+    <button type="submit">Enviar</button>
+  </form>	
+  				
+  				
+  				
+  				
+				<script>
+  // Lógica para mostrar/ocultar sidebars en móvil
+  function toggleSidebar(side) {
+    const aside = document.querySelector(`aside.${side}`);
+    aside.classList.toggle('active');
+  }
+
+  // Centrar contenido aunque haya zoom
+  window.addEventListener('resize', centerLayout);
+  window.addEventListener('load', centerLayout);
+  function centerLayout() {
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+  }
+</script>
+  
+				
+				
+				
+				
+				<!---    python  ----></!--->
+				
+				
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "726743092";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+				
+				
+  <script src="flutter.js" defer></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+				
+				
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+				
+				
+				
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvYLAK_A0uhFuVPQbTxUdVWbb_Lsur9cg",
+      authDomain: "prod-auto-gpt.firebaseapp.com",
+      projectId: "prod-auto-gpt",
+      storageBucket: "prod-auto-gpt.appspot.com",
+      messagingSenderId: "387936576242",
+      appId: "1:387936576242:web:7536e0c50dd81b4dd7a66b",
+      measurementId: "G-8PRS69JJRL"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+				
+				///
+//  <///script>
+
+				
+ // <script>
+				
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+  
+  
+  <script>
+  				//SCRIPTS IA - CHATS MENSAJES
+				const API_KEY = "AIzaSyDSIy5m7mTXlMMR_OOdCu2Af_EwoCd124w"; // Replace with your Gemini API Key
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+const chatBox = document.getElementById("chatBox");
+
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const userText = input.value.trim();
+  if (!userText) return;
+  
+  addMessage("user", userText);
+  input.value = "";
+  getBotResponse(userText);
+}
+
+function addMessage(sender, text) {
+  const msg = document.createElement("div");
+  msg.className = `message ${sender}`;
+  
+  if (sender === "bot" && text.includes("```")) {
+    const parsed = parseCode(text);
+    msg.innerHTML = parsed;
+  } else {
+    msg.innerText = text;
+  }
+  
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function parseCode(text) {
+  return text.replace(/```(\w+)?([\s\S]*?)```/g, (_, lang, code) => {
+    return `<pre><code>${escapeHtml(code.trim())}</code></pre>`;
+  });
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+async function getBotResponse(prompt) {
+  const thinking = document.createElement("div");
+  thinking.className = "message bot";
+  thinking.innerText = "Typing...";
+  chatBox.appendChild(thinking);
+  chatBox.scrollTop = chatBox.scrollHeight;
+  
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+    });
+    
+    const data = await res.json();
+    const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "❌ No response.";
+    thinking.remove();
+    addMessage("bot", aiText);
+  } catch (err) {
+    thinking.remove();
+    addMessage("bot", "⚠️ Error getting response.");
+  }
+}
+  </script>
+
+				
+				<!
+{% extends "base.html" %}
+  
+{% block extrahead %}
+
+----->
+				
+				
+<div id="my-component-root" class="mendable-search"> up</div>
+
+<script src="https://unpkg.com/@mendable/search@0.0.155/dist/umd/mendable-bundle.min.js"></script>
+{% raw %}
+<script>
+    Mendable.initialize({
+      anon_key: 'a0bd44db-eb3b-412f-8924-b31c58244a64',
+      type: 'floatingButton',
+      style : { accentColor: '#3F51B5', darkMode: false },
+      floatingButtonStyle:{
+        backgroundColor: '#3F51B5',
+        color: '#fff',
+      },
+      icon: "https://mendable-storage.s3.amazonaws.com/autoGPT.gif",
+      botIcon: "https://mendable-storage.s3.amazonaws.com/autoGPTbot.gif",
+    })
+  </script>
+
+{% endraw %}
+{% endblock %}
+
+-->
+
+
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+				
+				
+				
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDKv7.20.0 and later, measurementId is optional
+				
+				
+				
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvYLAK_A0uhFuVPQbTxUdVWbb_Lsur9cg",
+      authDomain: "prod-auto-gpt.firebaseapp.com",
+      projectId: "prod-auto-gpt",
+      storageBucket: "prod-auto-gpt.appspot.com",
+      messagingSenderId: "387936576242",
+      appId: "1:387936576242:web:7536e0c50dd81b4dd7a66b",
+      measurementId: "G-8PRS69JJRL"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+				
+				
+								0⁰
+				<!----- this ------>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  
+								
+								</script>
+  
+  
+  /// <python>
+								<!----  
+
+  
+  import json
+import os
+import requests
+import sys
+import time
+from typing import Dict, List, Tuple
+
+CHECK_INTERVAL = 30
+
+
+def get_environment_variables() -> Tuple[str, str, str, str, str]:
+    """Retrieve and return necessary environment variables."""
+    try:
+        with open(os.environ["GITHUB_EVENT_PATH"]) as f:
+            event = json.load(f)
+
+        # Handle both PR and merge group events
+        if "pull_request" in event:
+            sha = event["pull_request"]["head"]["sha"]
+        else:
+            sha = os.environ["GITHUB_SHA"]
+
+        return (
+            os.environ["GITHUB_API_URL"],
+            os.environ["GITHUB_REPOSITORY"],
+            sha,
+            os.environ["GITHUB_TOKEN"],
+            os.environ["GITHUB_RUN_ID"],
+        )
+    except KeyError as e:
+        print(f"Error: Missing required environment variable or event data: {e}")
+        sys.exit(1)
+
+
+def make_api_request(url: str, headers: Dict[str, str]) -> Dict:
+    """Make an API request and return the JSON response."""
+    try:
+        print("Making API request to:", url)
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException as e:
+        print(f"Error: API request failed. {e}")
+        sys.exit(1)
+
+
+def process_check_runs(check_runs: List[Dict]) -> Tuple[bool, bool]:
+    """Process check runs and return their status."""
+    runs_in_progress = False
+    all_others_passed = True
+
+    for run in check_runs:
+        if str(run["name"]) != "Check PR Status":
+            status = run["status"]
+            conclusion = run["conclusion"]
+
+            if status == "completed":
+                if conclusion not in ["success", "skipped", "neutral"]:
+                    all_others_passed = False
+                    print(
+                        f"Check run {run['name']} (ID: {run['id']}) has conclusion: {conclusion}"
+                    )
+            else:
+                runs_in_progress = True
+                print(f"Check run {run['name']} (ID: {run['id']}) is still {status}.")
+                all_others_passed = False
+        else:
+            print(
+                f"Skipping check run {run['name']} (ID: {run['id']}) as it is the current run."
+            )
+
+    return runs_in_progress, all_others_passed
+
+
+def main():
+    api_url, repo, sha, github_token, current_run_id = get_environment_variables()
+
+    endpoint = f"{api_url}/repos/{repo}/commits/{sha}/check-runs"
+    headers = {
+        "Accept": "application/vnd.github.v3+json",
+    }
+    if github_token:
+        headers["Authorization"] = f"token {github_token}"
+
+    print(f"Current run ID: {current_run_id}")
+
+    while True:
+        data = make_api_request(endpoint, headers)
+
+        check_runs = data["check_runs"]
+
+        print("Processing check runs...")
+
+        print(check_runs)
+
+        runs_in_progress, all_others_passed = process_check_runs(check_runs)
+
+        if not runs_in_progress:
+            break
+
+        print(
+            "Some check runs are still in progress. "
+            f"Waiting {CHECK_INTERVAL} seconds before checking again..."
+        )
+        time.sleep(CHECK_INTERVAL)
+
+    if all_others_passed:
+        print("All other completed check runs have passed. This check passes.")
+        sys.exit(0)
+    else:
+        print("Some check runs have failed or have not completed. This check fails.")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+    
+  </python>
+  
+  
+  
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+
+  		  <title>Chat con Envío de Archivos</title>
+  <style>
+    /* Estilos básicos */
+    #chat-container {
+      width: 500px;
+      height: 400px;
+      border: 1px solid #ccc;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+    .message {
+      margin-bottom: 5px;
+      padding: 5px;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="chat-container">
+    <!-- Aquí se mostrarán los mensajes -->
+								<!--
+  </div>
+				<!--
+  <form id="message-form" enctype="multipart/form-data">
+    <input type="text" id="message-input" placeholder="Escribe tu mensaje">
+    <input type="file" id="file-input" name="archivo">
+    <button type="submit">Enviar</button>
+  </form>		
+  				
+-->
+				
+  <script>
+    // Javascript básico (necesitarás adaptarlo a tu backend)
+    const chatContainer = document.getElementById('chat-container');
+    const messageForm = document.getElementById('message-form');
+    const messageInput = document.getElementById('message-input');
+    const fileInput = document.getElementById('file-input');
+
+    messageForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const messageText = messageInput.value;
+      const file = fileInput.files[0]; // Obtener el archivo
+
+      // Crear el objeto FormData para enviar tanto el texto como el archivo
+      const formData = new FormData();
+      formData.append('message', messageText);
+      if (file) {
+        formData.append('archivo', file);
+      }
+
+      // Aquí deberías enviar el formData a tu servidor usando fetch o XMLHttpRequest
+      // ... (tu código para enviar los datos al servidor)
+
+      // Ejemplo simple (solo para mostrar el mensaje en el chat)
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      messageElement.textContent = messageText;
+      if(file){
+          messageElement.textContent += " - Archivo: "+ file.name;
+      }
+      chatContainer.appendChild(messageElement);
+      messageInput.value = '';
+      fileInput.value = null;
+
+      // Hacer scroll para mostrar el último mensaje
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    });
+  </script>
+				
+				
+				
+				
+				
+				
+				  				
+  </main>
+  <aside class="right">
+    
+    
+    
+    
+  </aside>
+				  
+				</div>
+
+</body>
+</html>
